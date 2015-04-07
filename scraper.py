@@ -32,7 +32,7 @@ for block in blocks:
 
 	# add the right prefix onto the url
 	pageUrl = link.replace("/preview","")
-	pageUrl = csvUrl.replace("/government","http://www.gov.uk/government")
+	pageUrl = pageUrl.replace("/government","http://www.gov.uk/government")
 	print pageUrl
 	
 	html2 = urllib2.urlopen(pageUrl)
@@ -45,6 +45,7 @@ for block in blocks:
 	# create the right strings for the new filename
 	csvYr = title.split(' ')[-1]
 	csvMth = title.split(' ')[-2][:3]
+	csvMth = convert_mth_strings(csvMth);
 	
 	filename = entity_id + "_" + csvYr + "_" + csvMth + ".csv"
 	
