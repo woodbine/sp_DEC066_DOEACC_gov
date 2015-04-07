@@ -33,7 +33,7 @@ for block in blocks:
 	# add the right prefix onto the url
 	pageUrl = link.replace("/preview","")
 	pageUrl = csvUrl.replace("/government","http://www.gov.uk/government")
-	#print csvUrl
+	print pageUrl
 	
 	html2 = urllib2.urlopen(pageUrl)
 	soup2 = BeautifulSoup(html2)
