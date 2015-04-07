@@ -28,7 +28,7 @@ blocks = soup.findAll('li', {'class':'publication document-row'})
 for block in blocks:
 
 	link = block.a['href']
-	title = block.h3.contents[0]
+	title = block.a.contents[0]
 	print title
 
 	# add the right prefix onto the url
