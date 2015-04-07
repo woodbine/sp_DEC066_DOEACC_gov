@@ -29,7 +29,6 @@ for block in blocks:
 
 	link = block.a['href']
 	title = block.a.contents[0]
-	print title
 
 	# add the right prefix onto the url
 	pageUrl = link.replace("/preview","")
