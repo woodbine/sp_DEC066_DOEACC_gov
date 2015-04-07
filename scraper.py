@@ -6,8 +6,8 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 
 # Set up variables
-entity_id = "DCM048_DFCMAS_gov"
-url = "https://www.gov.uk/government/publications/transactions-over-25k-2013-2014"
+entity_id = "DEC066_DOEACC_gov"
+url = "https://www.gov.uk/government/collections/departmental-spend-over-500"
 
 # Set up functions
 def convert_mth_strings ( mth_string ):
@@ -23,16 +23,12 @@ html = urllib2.urlopen(url)
 soup = BeautifulSoup(html)
 
 # find all entries with the required class
-blocks = soup.findAll('div', {'class':'attachment-details'})
+blocks = soup.findAll('div', {'class':'publication document-row'})
 
 for block in blocks:
 
 	link = block.a['href']
-	title = block.h2.contents[0]
-
-	# Some of our tags aren't consistent and bury the 'a' tag within the H2 tag
-	if hasattr(title,"href"):
-		title = title.text.strip()
+	title = block.h3.contents[0]
 
 	# add the right prefix onto the url
 	csvUrl = link.replace("/preview","")
