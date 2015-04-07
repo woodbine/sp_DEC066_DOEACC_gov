@@ -31,10 +31,16 @@ for block in blocks:
 	title = block.h3.contents[0]
 
 	# add the right prefix onto the url
-	csvUrl = link.replace("/preview","")
-	csvUrl = csvUrl.replace("/government","http://www.gov.uk/government")
+	pageUrl = link.replace("/preview","")
+	pageUrl = csvUrl.replace("/government","http://www.gov.uk/government")
 	#print csvUrl
-
+	
+	html2 = urllib2.urlopen(pageUrl)
+	soup2 = BeautifulSoup(html2)
+	
+	fileBlock = soup2.find('div',{'class':'attachment-details'})
+	fileUrl = fileBlock.a['href']
+	
 	# create the right strings for the new filename
 	csvYr = title.split(' ')[-1]
 	csvMth = title.split(' ')[-2][:3]
@@ -43,6 +49,6 @@ for block in blocks:
 	
 	todays_date = str(datetime.now())
 	
-	scraperwiki.sqlite.save(unique_keys=['l'], data={"l": csvUrl, "f": filename, "d": todays_date })
+	scraperwiki.sqlite.save(unique_keys=['l'], data={"l": fileUrl, "f": filename, "d": todays_date })
 	
 	print filename
