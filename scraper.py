@@ -45,7 +45,7 @@ for block in blocks:
 	csvMth = title.split(' ')[-2][:3]
 	csvMth = convert_mth_strings(csvMth);
 	
-	filename = entity_id + "_" + csvYr + "_" + csvMth + ".csv"
+	filename = entity_id + "_" + csvYr + "_" + csvMth
 	
 	todays_date = str(datetime.now())
 	
