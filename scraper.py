@@ -23,7 +23,7 @@ html = urllib2.urlopen(url)
 soup = BeautifulSoup(html)
 
 # find all entries with the required class
-blocks = soup.findAll('div', {'class':'publication document-row'})
+blocks = soup.findAll('li', {'class':'publication document-row'})
 
 for block in blocks:
 
