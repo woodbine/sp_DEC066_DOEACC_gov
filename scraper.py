@@ -39,6 +39,7 @@ for block in blocks:
 	
 	fileBlock = soup2.find('div',{'class':'attachment-details'})
 	fileUrl = fileBlock.a['href']
+	fileUrl = fileUrl.replace("/government","http://www.gov.uk/government")
 	
 	# create the right strings for the new filename
 	csvYr = title.split(' ')[-1]
